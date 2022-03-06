@@ -7,11 +7,10 @@ def DockerTag(){
     return tag
 }
 pipeline{
-    agent{
-        docker{
-            image 'maven'
-            args '-v $HOME/.m2:/root/.m2'
-        }
+    agent { label 'master' }
+    tools {
+      maven 'maven'
+      jdk 'jdk'
     }
     options{
         timestamps()
